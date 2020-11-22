@@ -16,6 +16,9 @@ public class Prospector : MonoBehaviour {
 	[Header("Set Dynamically")]
 	public Deck					deck;
 
+	public Layout layout;
+	public TextAsset layoutXML;
+
 	void Awake(){
 		S = this;
 	}
@@ -26,6 +29,9 @@ public class Prospector : MonoBehaviour {
 		Deck.Shuffle(ref deck.cards);	// This shuffles the deck
 		// The ref keyword passed a reference to deck.cards, which allows
 		// deck.cards to be modified by Deck.Shuffle()
+
+		layout = GetComponent<Layout>();   // Get the layout
+		layout.ReadLayout(layoutXML.text); // Pass LayoutXML to it
 	}
 
 }
